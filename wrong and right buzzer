@@ -1,0 +1,52 @@
+#include "pitches.h"
+
+int buzzer = 9;
+const int threshold = 10;    // minimum reading of the sensors that generates a note
+
+int wrongbuzzer[]={NOTE_A3,NOTE_A3,NOTE_A3}; // if the person got ut wrong
+int wrongbuzzer_tempo[]={8,8,8};
+int rightbuzzer[]={NOTE_E7,NOTE_E7,NOTE_E7}; // if the person got it right
+int rightbuzzer_tempo[]={8,8,8};
+
+void setup() {
+  Serial.begin(9600);
+  // put your setup code here, to run once:
+sound();
+sound2();
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
+void sound()
+{
+  
+  for (int i = 0; i < 3; i++)
+  {
+    int noteDuration = 1000 / wrongbuzzer_tempo[i];
+    tone(buzzer, wrongbuzzer[i], noteDuration);
+
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+
+    tone(buzzer, 0, noteDuration); //stop the tone playing
+  }
+}
+
+
+void sound2()
+{
+  
+  for (int i = 0; i < 3; i++)
+  {
+    int noteDuration = 1000 / rightbuzzer_tempo[i];
+    tone(buzzer, rightbuzzer[i], noteDuration);
+
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+
+    tone(buzzer, 0, noteDuration); //stop the tone playing
+  }
+}
