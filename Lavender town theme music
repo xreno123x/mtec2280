@@ -22,7 +22,8 @@ This example code is in the public domain.
 
 #include "pitches.h"
 
-int buzzer = 9;
+int buzzer = 9; // you need two buzzer for this track one for the top and the second one for the bottom part
+int buzzer = 10; // second buzzer for the bottom one
 const int threshold = 10;    // minimum reading of the sensors that generates a note
 
 
